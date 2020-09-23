@@ -1,0 +1,93 @@
+Fancy scrollbars  by Robert Rayment  June 2003
+
+ The purpose of these routines is to get away from the standard
+ VB scrollbars and add other colors and effects when wanted.
+
+ The method used is to put a VB ScrollBar on the form fixing
+ final position, Max, Min & SmallChange.  LargeChange is not
+ used.  Then a picture box containing 3 command buttons. The
+ prog will then overlay the VB ScrollBar matching the size
+ and position. 6 arrays are set up for each scrollbar for
+ retrieving info from the VB ScrollBar and setting scale
+ factors. The VB ScrollBars and the controls must be indexed.
+
+ NB Form Scalemode = Pixels or Twips is assumed
+
+ On Form put
+
+ Form1  Horz VB ScrollBar HS(0), HS(1) etc
+        Container: picHS(0), picHS(1) etc (twips)
+        Controls:  Left,       Thumb,     Right
+        in picHS  cmdHSLEF(0), cmdHSTUB(0), cmdHSRIT(0)
+                  cmdHSLEF(1), cmdHSTUB(1), cmdHSRIT(1)
+                              etc
+        Output values in HSVal(0), HSVal(1) etc
+
+ Form1  Vert VB ScrollBar VS(0), VS(1) etc
+        Container: picVS(0), picVS(1) etc (twips)
+        Controls:  Top,        Thumb,      Bottom
+        in picVS  cmdVSTOP(0), cmdVSTUB(0), cmdVSBOT(0)
+                  cmdVSTOP(1), cmdVSTUB(1), cmdVSBOT(1)
+                              etc
+        Output values in VSVal(0), VSVal(1) etc
+
+ NB These same Control Names must be used.  Also even
+    for one scrollbar it must have an index (ie 0).
+
+ Things that could be added: include LargeChange &
+ adjust thumb size according to range of values.
+
+ A full user control could be made (though I'm not
+ practised at that). It would enable some properties
+ to be more easily set but I think not so flexible
+ for the optional items used here, eg like shaping
+ APIs.  There is a scrollbar OCX on PSC at CodeID =
+ 22788 but is more complicated than the method used
+ here.
+
+ There is a reusable Module and a set of short Subs to include
+ on the Form containing the scrollbars.  Instructions are given
+ on Form1.
+
+1. MAIN EXAMPLE
+
+ The first examples use a picture box containing 3 command buttons
+ matching horizontal & vertical VB scrollbars.  The advantage of
+ including the VB scrollbars is that Nax, Min & SmallChange can be
+ set up at design time if wanted.  The size and position of the VB
+ scrollbars determines the final position of the 'fancy' scrollbars.
+
+ Shows icons on buttons
+ Shaping the thumb
+ Value on thumb
+ Drawing on picbox container
+
+2. SILLY SCROLLBARS
+
+ Only uses horizontal scrollbars
+ Shaping thumb & picbox container
+ Icons on buttons
+
+3. PIC SCROLLER
+
+ One horizontal & one vertical scrollbar used
+ to scroll a picture box
+
+4. PIC SCROLLER 2
+
+ As pic scroller but includes the use of the right mouse button
+ to move directly to the start or end values of the scrollbars.
+ ie slightly different Module & fixed Subs on Form to test for
+ use of right mosue button.
+
+5. ALTERNATIVE THUMB
+
+ Uses a picture box instead of a command button for the scrollbar
+ thumb.  Different style but main advantage is for simulating an
+ up/down control instead of the faulty VB one.  No 'buddy text
+ box' attempted however.  Use different name for thumb, Module & 
+ fixed Subs on Form are changed.  In this case no easy way to
+ use changing icons on the thumb.
+
+
+ 
